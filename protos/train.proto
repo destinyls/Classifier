@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package protos;
+
+import "protos/optimizer.proto";
+
+message TrainConfig {
+  uint32 num_epochs = 1;
+  uint32 batch_size = 2;
+  string checkpoints_path = 3;
+  bool use_mixup = 4;
+  Optimizer optimizer = 5;
+}

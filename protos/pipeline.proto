@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package protos;
+
+import "protos/train.proto";
+import "protos/model.proto";
+
+message PipelineConfig {
+  string data_root = 1;
+  ClassificationModel model = 2;
+  TrainConfig train_config = 3;
+}
+
