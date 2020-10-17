@@ -48,6 +48,7 @@ class PersonDataset(Data.Dataset):
         image = imread(self.paths[i])
         # image = letterbox_image(image, (300, 300))
         # image = crop_image(image)
+    
         if len(image.shape) == 2:
             image = np.expand_dims(image, 2).repeat(3, 2)
         elif image.shape[2] > 3:  # test/1078.jpg

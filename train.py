@@ -166,6 +166,7 @@ if __name__ == "__main__":
                              'model_state_dict': model.state_dict(),
                              'acc': epoch_acc}
                     best_acc = epoch_acc
+                    torch.save(model.state_dict(), os.path.join(checkpoints_path, 'model_{}_{}.pth'.format(state["epoch"], state["acc"])))
                     save_checkpoint(state, filepath=checkpoints_path, is_best=True)
 
         scheduler.step()

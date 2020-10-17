@@ -15,7 +15,7 @@ def build_dataloader(data_root, batch_size=1):
     test_dataset = PersonDataset(test_paths, train = False, test = True)
     testloader = Data.DataLoader(test_dataset, shuffle=False, batch_size = batch_size, num_workers = 0)
 
-    train = pd.read_csv(os.path.join(data_root, 'train_all_image.csv'))
+    train = pd.read_csv(os.path.join(data_root, 'train_plus_labeled_test.csv'))
     train_paths = train['image_path'].apply(get_image_path)
     train_labels = train.loc[:, 'smoking_images':'normal_images']
     train_paths, valid_paths, train_labels, valid_labels = train_test_split(train_paths, train_labels, test_size = 0.2, random_state=23, stratify = train_labels)

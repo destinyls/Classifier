@@ -44,18 +44,18 @@ if __name__ == "__main__":
     model, _ = initialize_model(model_name, num_classes, feature_extract=False, use_pretrained=True)
     model = model.to(device)
     checkpoints = torch.load(checkpoints_path)
-    model.load_state_dict(checkpoints["model_state_dict"])
+    # model.load_state_dict(checkpoints["model_state_dict"])
+    model.load_state_dict(checkpoints)
     model.eval()
     _, _, testloader = build_dataloader(data_root, batch_size=1)
     results = test_fn(model, testloader)
-    
-    for i in range(9):
-        print("----------crop----------： ", i)
+    for i in range(2):
+        print("----------crop----------： ", i + 1)
         results += test_fn(model, testloader)
-    results /= 10
+    results /= 3
     results_label = np.argmax(results, axis=1)
     results_score = np.max(results, axis=1).tolist()
-    
+
     results_json = []
     class_dict = {0: "smoking", 1: "calling", 2: "normal"}
     image_path = pd.read_csv(os.path.join(data_root, 'test.csv'))["image_path"]

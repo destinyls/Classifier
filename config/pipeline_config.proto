@@ -1,12 +1,12 @@
 data_root : "dataset/"
 model : {
-    model_name : "resnet-34"
+    model_name : "resnest101"
     num_classes : 3
 }
 train_config : {
     num_epochs : 80
-    batch_size : 16
-    checkpoints_path : "./saved_model/person_behavior_resnet-34_plus_old_images_10_15"
+    batch_size : 24
+    checkpoints_path : "./saved_model/person_behavior_resnest101_plus_labeled_test"
     use_mixup: true
     optimizer: {
         adam_optimizer: {
